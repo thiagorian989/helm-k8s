@@ -1,0 +1,75 @@
+deployments:
+  giropops-senhas:
+    name: "giropops-senhas-helm"
+    image: "linuxtips/giropops-senhas:1.0"
+    replicas: "3"
+    ports:
+      - port: "5000"
+      - port: "8088"
+    labels:
+      app: "giropops-app"
+      env: "labs-APP"
+      live: "true-false"
+    resources:
+      requests:
+        cpu: "0.2"
+        memory: "64Mi"
+      limits:
+        cpu: "0.5"
+        memory: "256Mi"
+  redis:
+    name: "redis-helm"
+    image: "redis"
+    replicas: "1"
+    labels:
+      app: "redis"
+      env: "labs-redis"
+      live: "false-true"
+    resources:
+      requests:
+        cpu: "0.2"
+        memory: "64Mi"
+      limits:
+        cpu: "0.5"
+        memory: "256Mi"
+
+services:
+  giropops:
+    ports:
+    - port: 5000
+      targetPort: 5000
+      name: "app"
+      serviceType: "ClusterIP"
+      #serviceType: "NodePort"
+      NodePort: 32500
+    - port: 8088
+      targetPort: 8088
+      name: "metrics"
+      serviceType: "ClusterIP"
+    labels:
+      app: "giropops-app"
+      env: "labs"
+      live: "true-false"
+  redis:
+    ports:
+    - port: 6379
+      targetPort: 6379
+      name: "service"
+      serviceType: "ClusterIP"
+    labels:
+      app: "redis"
+
+observability:
+  giropops-senhas:
+    logging: true
+    metrics:
+      enabled: true
+      path: "/metrics"
+
+databases:
+  giropops-senhas:
+    mysql:
+      hosts: "mysql.svc.cluster.local"
+      port: 3306
+      name: "ateuzoDB"
+

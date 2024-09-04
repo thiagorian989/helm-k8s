@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-senhas
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service: 
+            name: {{ .Values.services.giropops.labels.app }}
+            port:
+              {{- range .Values.services.giropops.ports }}
+              {{- if eq .name "app" }}
+              number: {{ .port }}
+              {{- end }}
+              {{- end }}

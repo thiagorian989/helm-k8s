@@ -1,0 +1,16 @@
+apiVersion: v1
+entries:
+  giropops-senhas:
+  - apiVersion: v2
+    appVersion: "1.0"
+    created: "2024-09-03T21:01:37.624019051-03:00"
+    description: Gerador de Senha
+    digest: 10faeb1cdab895ae106e74c530ef760d81a8bbd64dcaef34bdf17eadd24f08e0
+    icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOK1ym_awR3kXLyPDr9_XHkafslAcw9wWOkPc_s_wclrvZHa3b8pLcoP7NIrlXCO9VTc8&usqp=CAU
+    name: giropops-senhas
+    sources:
+    - https://github.com/badtuxx/giropops-senha
+    urls:
+    - https://gitlab.com/grupoinfra/helm-k8s/giropops-senhas-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-09-03T21:01:37.623268283-03:00"

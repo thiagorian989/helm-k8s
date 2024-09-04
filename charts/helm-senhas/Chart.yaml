@@ -1,0 +1,8 @@
+apiVersion: v2
+name: giropops-senhas
+description: Gerador de Senha
+version: 0.1.0
+appVersion: "1.0"
+icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOK1ym_awR3kXLyPDr9_XHkafslAcw9wWOkPc_s_wclrvZHa3b8pLcoP7NIrlXCO9VTc8&usqp=CAU
+sources:
+  - https://github.com/badtuxx/giropops-senha
